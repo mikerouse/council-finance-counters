@@ -1,0 +1,42 @@
+[runtime]
+language = "php"
+version = "8.3"
+
+[environment]
+name = "Council Finance Counters (Laravel)"
+description = "This environment supports development of a Laravel-based version of the Council Finance Counters app. It replaces a legacy WordPress plugin and provides modern UI and routing."
+
+[files]
+# Main Laravel structure (you'll add files gradually or via upload)
+include = [
+  "routes/web.php",
+  "app/Http/Controllers/**/*.php",
+  "app/Models/**/*.php",
+  "database/migrations/**/*.php",
+  "resources/views/**/*.blade.php",
+  ".env.example",
+  "composer.json"
+]
+
+[context]
+# Framework
+framework = "Laravel"
+version = "12.x"
+
+# Key concepts
+goals = [
+  "Replace WordPress plugin with Laravel app",
+  "Mimic counter display and calculation features",
+  "Use modern routing, controller structure, and Eloquent models",
+  "Hide any trace of WordPress architecture",
+  "Deployable via Laravel Forge"
+]
+
+# Codex memory and purpose
+notes = """
+This environment is focused on building a Laravel-based application called 'Council Finance Counters'. It is a financial transparency tool that displays local council spending, income, debt and reserves.
+
+Previously, this was a WordPress plugin using shortcodes and custom admin pages. We're migrating that logic to Laravel with clean, modern practices.
+
+Frontend styling should be clean and app-like. Controllers should follow RESTful conventions. Views should use Blade. Laravel migrations will manage the database schema.
+"""
