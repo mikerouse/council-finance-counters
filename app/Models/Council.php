@@ -3,6 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Document;
+use App\Models\CustomFieldValue;
+use App\Models\FinancialYear;
 
 /**
  * Basic Council model storing key finance fields.
@@ -47,4 +52,20 @@ class Council extends Model
         'debt_adjustments' => 'array',
         'council_closed' => 'boolean',
     ];
+
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    public function customFieldValues(): HasMany
+    {
+        return $this->hasMany(CustomFieldValue::class);
+    }
+
+    public function financialYears(): BelongsToMany
+    {
+        return $this->belongsToMany(FinancialYear::class, 'council_financial_year')
+            ->withPivot('is_default');
+    }
 }
